@@ -4,6 +4,7 @@ import { Header } from './components/Header';
 import { SearchBar } from './components/SearchBar';
 import { SearchResults } from './components/SearchResults';
 import { LoadingSpinner } from './components/LoadingSpinner';
+import { PerformanceMonitor } from './components/PerformanceMonitor';
 import { useSearchData } from './hooks/useSearchData';
 
 export default function Home() {
@@ -48,6 +49,12 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      {/* 性能监控 */}
+      <PerformanceMonitor 
+        searchTerm={searchTerm}
+        resultCount={filteredResults.length}
+      />
     </div>
   );
 }

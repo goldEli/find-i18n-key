@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import {
   HoverCard,
   HoverCardContent,
@@ -9,7 +10,8 @@ interface RouteHoverCardProps {
   routeIndex: number;
 }
 
-export function RouteHoverCard({ route, routeIndex }: RouteHoverCardProps) {
+// 使用 memo 避免不必要的重渲染
+export const RouteHoverCard = memo(function RouteHoverCard({ route, routeIndex }: RouteHoverCardProps) {
   return (
     <HoverCard key={routeIndex}>
       <HoverCardTrigger asChild>
@@ -45,4 +47,4 @@ export function RouteHoverCard({ route, routeIndex }: RouteHoverCardProps) {
       </HoverCardContent>
     </HoverCard>
   );
-}
+});

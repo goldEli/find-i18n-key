@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { RouteHoverCard } from './RouteHoverCard';
 import { KeyUsageWithSource } from '../types';
 
@@ -6,9 +7,10 @@ interface SearchResultItemProps {
   index: number;
 }
 
-export function SearchResultItem({ item, index }: SearchResultItemProps) {
+// 使用 memo 避免不必要的重渲染
+export const SearchResultItem = memo(function SearchResultItem({ item, index }: SearchResultItemProps) {
   return (
-    <div key={`${item.source}-${index}`} className="px-6 py-4 hover:bg-gray-50">
+    <div key={`${item.source}-${index}`} className="px-6 py-4 hover:bg-gray-50 transition-colors duration-150">
       <div className="flex items-start justify-between">
         <div className="flex-1">
           <div className="flex items-center gap-3 mb-2">
@@ -38,4 +40,4 @@ export function SearchResultItem({ item, index }: SearchResultItemProps) {
       </div>
     </div>
   );
-}
+});

@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { SearchResultItem } from './SearchResultItem';
 import { KeyUsageWithSource } from '../types';
 
@@ -6,7 +7,8 @@ interface SearchResultsProps {
   searchTerm: string;
 }
 
-export function SearchResults({ filteredResults, searchTerm }: SearchResultsProps) {
+// 使用 memo 避免不必要的重渲染
+export const SearchResults = memo(function SearchResults({ filteredResults, searchTerm }: SearchResultsProps) {
   if (filteredResults.length === 0) {
     return (
       <div className="px-6 py-12 text-center">
@@ -25,9 +27,23 @@ export function SearchResults({ filteredResults, searchTerm }: SearchResultsProp
     <div className="max-h-[600px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
       <div className="divide-y divide-gray-200">
         {filteredResults.map((item, index) => (
-          <SearchResultItem key={`${item.source}-${index}`} item={item} index={index} />
+          <SearchResultItem 
+            key={`${item.source}-${item.key}-${index}`} 
+            item={item} 
+            index={index} 
+          />
         ))}
+      </div>
+      
+      {/* 结果统计 */}
+      <div className="px-6 py-3 bg-gray-50 text-xs text-gray-500 text-center">
+        显示 {filteredResults.length} 个结果
+        {searchTerm && (
+          <span className="ml-2">
+            (搜索: "{searchTerm}")
+          </span>
+        )}
       </div>
     </div>
   );
-}
+});
