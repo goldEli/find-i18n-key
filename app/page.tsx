@@ -2,6 +2,11 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from '@/components/ui/hover-card';
 
 interface KeyUsage {
   key: string;
@@ -103,7 +108,7 @@ export default function Home() {
             />
             <h1 className="text-2xl font-bold text-gray-900">国际化键值搜索</h1>
           </div>
-          <p className="mt-2 text-gray-600">搜索 web.json 和 trade.json 中的国际化键值</p>
+          {/* <p className="mt-2 text-gray-600">搜索 web.json 和 trade.json 中的国际化键值</p> */}
         </div>
       </header>
 
@@ -178,16 +183,43 @@ export default function Home() {
                           <div className="text-sm text-gray-600">
                             <span className="font-medium">路由:</span>
                           </div>
-                          <div className="flex flex-wrap gap-2">
-                            {item.routes.map((route, routeIndex) => (
-                              <span
-                                key={routeIndex}
-                                className="inline-flex items-center px-2.5 py-1.5 rounded-md text-xs font-medium bg-gray-100 text-gray-800 hover:bg-gray-200 transition-colors"
-                              >
-                                {route}
-                              </span>
-                            ))}
-                          </div>
+                                                     <div className="flex flex-wrap gap-2">
+                             {item.routes.map((route, routeIndex) => (
+                               <HoverCard key={routeIndex}>
+                                 <HoverCardTrigger asChild>
+                                   <span className="inline-flex items-center px-2.5 py-1.5 rounded-md text-xs font-medium bg-gray-100 text-gray-800 hover:bg-gray-200 transition-colors cursor-pointer">
+                                     {route}
+                                   </span>
+                                 </HoverCardTrigger>
+                                 <HoverCardContent className="w-auto p-3">
+                                   <div className="flex flex-col gap-2">
+                                     <div className="flex items-center gap-2">
+                                       <span className="text-gray-600 text-xs font-medium">生产:</span>
+                                       <a 
+                                         href={`https://weex.com${route}`} 
+                                         target="_blank" 
+                                         rel="noopener noreferrer"
+                                         className="text-blue-600 hover:text-blue-500 underline hover:no-underline text-xs"
+                                       >
+                                         weex.com{route}
+                                       </a>
+                                     </div>
+                                     <div className="flex items-center gap-2">
+                                       <span className="text-gray-600 text-xs font-medium">测试:</span>
+                                       <a 
+                                         href={`https://stg-www3.weex.tech/zh-TW${route}`} 
+                                         target="_blank" 
+                                         rel="noopener noreferrer"
+                                         className="text-green-600 hover:text-green-500 underline hover:no-underline text-xs"
+                                       >
+                                         stg-www3.weex.tech/zh-TW{route}
+                                       </a>
+                                     </div>
+                                   </div>
+                                 </HoverCardContent>
+                               </HoverCard>
+                             ))}
+                           </div>
                         </div>
                       </div>
                     </div>
