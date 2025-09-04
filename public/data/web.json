@@ -1,0 +1,22 @@
+{
+  "keyUsage": [
+    {
+      "key": "wxtPreIco.sign_success_tip",
+      "routes": [
+        "/wxt/presale"
+      ]
+    },
+    {
+      "key": "wxtPreIco.sub_downtime",
+      "routes": [
+        "/wxt/presale"
+      ]
+    },
+    {
+      "key": "wxtPreIco.sub_end",
+      "routes": [
+        "/wxt/presale"
+      ]
+    }
+  ]
+}

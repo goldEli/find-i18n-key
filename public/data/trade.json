@@ -1,0 +1,19 @@
+{
+  "keyUsage": [
+    {
+      "key": "address_management.remarks",
+      "routes": ["/transac/newcontract"]
+    },
+    {
+      "key": "assets.assets_currency",
+      "routes": [
+        "/asset/transferRecord",
+        "/record/exchange",
+        "/record/exchangePro",
+        "/record/exchange_old",
+        "/record/financial",
+        "/record/otc"
+      ]
+    }
+  ]
+}
