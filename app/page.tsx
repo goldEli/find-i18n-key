@@ -124,7 +124,7 @@ export default function Home() {
             <input
               type="text"
               className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-              placeholder="输入要搜索的键值 (例如: wxtPreIco, address_management)"
+              placeholder="输入要搜索的键值 (例如: WELaunch.airdrop_tokens, WELaunch.avilible)"
               value={searchTerm}
               onChange={handleSearch}
             />
@@ -161,70 +161,72 @@ export default function Home() {
                 </p>
               </div>
             ) : (
-              <div className="divide-y divide-gray-200">
-                {filteredResults.map((item, index) => (
-                  <div key={`${item.source}-${index}`} className="px-6 py-4 hover:bg-gray-50">
-                    <div className="flex items-start justify-between">
-                      <div className="flex-1">
-                        <div className="flex items-center gap-3 mb-2">
-                          <h3 className="text-sm font-medium text-gray-900 font-mono">
-                            {item.key}
-                          </h3>
-                          <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                            item.source === 'web.json' 
-                              ? 'bg-blue-100 text-blue-800' 
-                              : 'bg-green-100 text-green-800'
-                          }`}>
-                            {item.source}
-                          </span>
-                        </div>
-                        
-                        <div className="space-y-2">
-                          <div className="text-sm text-gray-600">
-                            <span className="font-medium">路由:</span>
+              <div className="max-h-[600px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
+                <div className="divide-y divide-gray-200">
+                  {filteredResults.map((item, index) => (
+                    <div key={`${item.source}-${index}`} className="px-6 py-4 hover:bg-gray-50">
+                      <div className="flex items-start justify-between">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-3 mb-2">
+                            <h3 className="text-sm font-medium text-gray-900 font-mono">
+                              {item.key}
+                            </h3>
+                            <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                              item.source === 'web.json' 
+                                ? 'bg-blue-100 text-blue-800' 
+                                : 'bg-green-100 text-green-800'
+                            }`}>
+                              {item.source}
+                            </span>
                           </div>
-                                                     <div className="flex flex-wrap gap-2">
-                             {item.routes.map((route, routeIndex) => (
-                               <HoverCard key={routeIndex}>
-                                 <HoverCardTrigger asChild>
-                                   <span className="inline-flex items-center px-2.5 py-1.5 rounded-md text-xs font-medium bg-gray-100 text-gray-800 hover:bg-gray-200 transition-colors cursor-pointer">
-                                     {route}
-                                   </span>
-                                 </HoverCardTrigger>
-                                 <HoverCardContent className="w-auto p-3">
-                                   <div className="flex flex-col gap-2">
-                                     <div className="flex items-center gap-2">
-                                       <span className="text-gray-600 text-xs font-medium">生产:</span>
-                                       <a 
-                                         href={`https://weex.com${route}`} 
-                                         target="_blank" 
-                                         rel="noopener noreferrer"
-                                         className="text-blue-600 hover:text-blue-500 underline hover:no-underline text-xs"
-                                       >
-                                         weex.com{route}
-                                       </a>
-                                     </div>
-                                     <div className="flex items-center gap-2">
-                                       <span className="text-gray-600 text-xs font-medium">测试:</span>
-                                       <a 
-                                         href={`https://stg-www3.weex.tech/zh-TW${route}`} 
-                                         target="_blank" 
-                                         rel="noopener noreferrer"
-                                         className="text-green-600 hover:text-green-500 underline hover:no-underline text-xs"
-                                       >
-                                         stg-www3.weex.tech/zh-TW{route}
-                                       </a>
-                                     </div>
-                                   </div>
-                                 </HoverCardContent>
-                               </HoverCard>
-                             ))}
-                           </div>
+                          
+                          <div className="space-y-2">
+                            <div className="text-sm text-gray-600">
+                              <span className="font-medium">路由:</span>
+                            </div>
+                            <div className="flex flex-wrap gap-2">
+                              {item.routes.map((route, routeIndex) => (
+                                <HoverCard key={routeIndex}>
+                                  <HoverCardTrigger asChild>
+                                    <span className="inline-flex items-center px-2.5 py-1.5 rounded-md text-xs font-medium bg-gray-100 text-gray-800 hover:bg-gray-200 transition-colors cursor-pointer">
+                                      {route}
+                                    </span>
+                                  </HoverCardTrigger>
+                                  <HoverCardContent className="w-auto p-3">
+                                    <div className="flex flex-col gap-2">
+                                      <div className="flex items-center gap-2">
+                                        <span className="text-gray-600 text-xs font-medium">生产:</span>
+                                        <a 
+                                          href={`https://weex.com${route}`} 
+                                          target="_blank" 
+                                          rel="noopener noreferrer"
+                                          className="text-blue-600 hover:text-blue-500 underline hover:no-underline text-xs"
+                                        >
+                                          weex.com{route}
+                                        </a>
+                                      </div>
+                                      <div className="flex items-center gap-2">
+                                        <span className="text-gray-600 text-xs font-medium">测试:</span>
+                                        <a 
+                                          href={`https://stg-www3.weex.tech/zh-TW${route}`} 
+                                          target="_blank" 
+                                          rel="noopener noreferrer"
+                                          className="text-green-600 hover:text-green-500 underline hover:no-underline text-xs"
+                                        >
+                                          stg-www3.weex.tech/zh-TW{route}
+                                        </a>
+                                      </div>
+                                    </div>
+                                  </HoverCardContent>
+                                </HoverCard>
+                              ))}
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             )}
           </div>
