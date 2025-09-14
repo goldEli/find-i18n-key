@@ -40,7 +40,7 @@ export const SearchResults = memo(function SearchResults({ filteredResults, sear
         显示 {filteredResults.length} 个结果
         {searchTerm && (
           <span className="ml-2">
-            (搜索: "{searchTerm}")
+            (搜索: {searchTerm})
           </span>
         )}
       </div>
